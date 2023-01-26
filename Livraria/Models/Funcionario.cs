@@ -12,7 +12,7 @@ namespace Livraria.Models
         //TODO rever
         public string Senha { get; private set; }
 
-        public List<T> ComissoesDeVenda = new List<T>();
+        public List<double> ComissoesDeVenda { get; set; } = new List<double>();
         public Funcionario(string nome, string cpf, int idade, string login, string senha) : base(nome, cpf, idade)
         {
             Login = login;
