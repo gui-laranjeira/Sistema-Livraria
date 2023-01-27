@@ -8,7 +8,21 @@ namespace Livraria.Models
 {
     internal static class Sistema
     {
-        //TODO implementar metodo
+        private static bool VerificarSenha(string senhaCadastrada, string senhaDigitada)
+        {
+            int hashCodeSenhaDigitada = senhaDigitada.GetHashCode();
+            int hashCodeSenhaCadastrada = senhaCadastrada.GetHashCode();
+
+            if (hashCodeSenhaDigitada.Equals(hashCodeSenhaCadastrada))
+            {
+                if (senhaDigitada.Equals(senhaCadastrada))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
         public static void RealizarLogin(Funcionario funcionario)
         {
             Console.Clear();
@@ -22,14 +36,15 @@ namespace Livraria.Models
                 {
                     Console.WriteLine("Digite a senha:");
                     string senha = Console.ReadLine();
-                    if (funcionario.Senha == senha)
+
+                    if (VerificarSenha(funcionario.Senha, senha))
                     {
                         Console.WriteLine("Seja bem vindo!");
                         checkLogin = true;
                     }
                     else
                     {
-                        Console.WriteLine("Senha inválida, tente novamente");
+                        Console.WriteLine("Senha inválida. Tente novamente.");
                     }
                 }
                 else
