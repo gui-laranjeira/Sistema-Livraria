@@ -1,5 +1,5 @@
 ﻿using Livraria.Models;
-Funcionario funcionario = new Funcionario("João Pedro", "cpf", 21, "user", "senha");
+Funcionario funcionario = new Funcionario("João Pedro", "cpf", 21, "admin", "admin");
 Cliente cliente1 = new Cliente("Guilherme Laranjeira", "41245125648", 23, "Rua Laranjais 1029", "guilr13@gmail.com");
 Cliente cliente2 = new Cliente("Matheus Silva", "98584512345", 17, "Av. Paulista 2056", "matheus.silva@gmail.com");
 List<Cliente> clientes = new List<Cliente>();
@@ -35,7 +35,8 @@ do
             break;
 
         case 2:
-            estoque.RegistrarProduto();
+            var produto = Sistema.InstanciarProduto();
+            estoque.RegistrarProduto(produto);
             Console.ReadKey();
             break;
 

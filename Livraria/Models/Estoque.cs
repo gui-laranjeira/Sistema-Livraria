@@ -12,68 +12,15 @@ namespace Livraria.Models
         public List<IProduto> ProdutosEmEstoque { get; set; } = new List<IProduto>();
         int id = 1;
 
-        public void RegistrarProduto()
+        //IoC e DI
+        public void RegistrarProduto(IProduto produto)
         {
-            Console.WriteLine("(1) - Livro");
-            Console.WriteLine("(2) - Ebook");
-            int input = Validacao.IntV();
-
-            if (input == 1)
-            {
-                Console.WriteLine("Insira o título:");
-                string titulo = Validacao.StringV();
-
-                Console.WriteLine("Insira o autor:");
-                string autor = Validacao.StringV();
-
-                Console.WriteLine("Insira a editora:");
-                string editora = Validacao.StringV(); 
-                
-                Console.WriteLine("Insira o ano de publicação:");
-                int anoPublicacao = Validacao.IntV();
-
-                Console.WriteLine("Insira o ISBN do livro:");
-                string isbn = Validacao.StringV();
-
-                Console.WriteLine("Insira o preço do livro:");
-                double preco = Validacao.DoubleV();
-
-                IProduto produto = new Livro(id, titulo, autor , editora, anoPublicacao, isbn, preco);
-                ProdutosEmEstoque.Add(produto);
-                ++id;
-                Console.Clear();
-                Console.WriteLine($"O livro {produto.Titulo} foi adicionado.");
-            }
-            else if (input == 2)
-            {
-                Console.WriteLine("Insira o título:");
-                string titulo = Validacao.StringV();
-
-                Console.WriteLine("Insira o autor:");
-                string autor = Validacao.StringV();
-
-                Console.WriteLine("Insira a editora:");
-                string editora = Validacao.StringV();
-
-                Console.WriteLine("Insira o ano de publicação:");
-                int anoPublicacao = Validacao.IntV();
-
-                Console.WriteLine("Insira o ISBN do livro:");
-                string isbn = Validacao.StringV();
-
-                Console.WriteLine("Insira o preço do livro:");
-                double preco = Validacao.DoubleV();
-
-                IProduto produto = new Ebook(id, titulo, autor, editora, anoPublicacao, isbn, preco);
-                ProdutosEmEstoque.Add(produto);
-                ++id;
-                Console.Clear();
-                Console.WriteLine($"O ebook {produto.Titulo} foi adicionado.");
-            }
-            else
-            {
-                Console.WriteLine("Insira uma opção válida!");
-            }                         
+            ++id;
+            produto.Id = id;
+            ProdutosEmEstoque.Add(produto);
+            Console.Clear();
+            Console.WriteLine($"O {produto.tipoProduto} '{produto.Titulo}' foi adicionado ao estoque.");
+           
         }
         public void ConsultarEstoque()
         {
@@ -89,16 +36,17 @@ namespace Livraria.Models
         {            
             Console.WriteLine("Insira o nome do título: ");
             string nome = Validacao.StringV();
-            bool v = false;
+            bool verificador = false;
             foreach (IProduto n in ProdutosEmEstoque)
             {
                 if (n.Titulo.ToUpper() == nome.ToUpper())
                 {
                     Log.ImprimirInformacoes(n);
-                    v = true;
+                    Console.WriteLine();
+                    verificador = true;
                 }                                 
             }
-            if (v == false)
+            if (verificador == false)
             {
                 Console.WriteLine("Produto não encontrado em estoque. ");
             }
@@ -117,6 +65,8 @@ namespace Livraria.Models
                     cliente = c;
                 }
             }
+
+
             if (clienteEncontrado == false)
             {
                 Console.WriteLine("Cliente não encontrado!");

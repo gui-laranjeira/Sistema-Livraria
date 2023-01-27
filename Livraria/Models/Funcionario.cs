@@ -31,10 +31,13 @@ namespace Livraria.Models
         {
             Console.Clear();
             Console.WriteLine($"Comissões de {this.Nome}:");
+            double somaTotal = 0;
             foreach(double comissao in ComissoesDeVenda)
             {
-                Console.WriteLine(comissao.ToString("0.00") + "R$");
+                Console.WriteLine(comissao.ToString("0.00") + " R$");
+                somaTotal += comissao;
             }
+            Console.WriteLine($"Total: {somaTotal.ToString("0.00")} R$");
         }
     }
 }

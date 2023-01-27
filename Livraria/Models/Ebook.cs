@@ -19,9 +19,9 @@ namespace Livraria.Models
         public double Preco { get; set; }
         public TipoProduto tipoProduto { get; set; } = TipoProduto.Ebook;
 
-        public Ebook(int id, string titulo, string autor, string editora, int anoPublicacao, string isbn, double preco)
+        public Ebook(string titulo, string autor, string editora, int anoPublicacao, string isbn, double preco)
         {
-            Id = id;
+            
             Titulo = titulo;
             Autor = autor;
             Editora = editora;
@@ -29,6 +29,18 @@ namespace Livraria.Models
             ISBN = isbn;
             Preco = preco;
         }
+
+        public Ebook(int id, string titulo, string autor, string editora, int anoPublicacao, string isbn, double preco)
+        {
+            this.Id = id;
+            Titulo = titulo;
+            Autor = autor;
+            Editora = editora;
+            AnoPublicacao = anoPublicacao;
+            ISBN = isbn;
+            Preco = preco;
+        }
+
 
         public void EnviarLivro(string endereco)
         {

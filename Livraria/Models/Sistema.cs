@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Livraria.Interface;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,7 +30,13 @@ namespace Livraria.Models
             bool checkLogin = false;
             do
             {
-                Console.WriteLine("** Livraria Sinqiars **\nFaça login");
+                
+                Console.WriteLine("*************************");
+                Console.WriteLine("**                     **");
+                Console.WriteLine("**  Livraria Sinqiers  **");
+                Console.WriteLine("**                     **");
+                Console.WriteLine("*************************");
+                Console.WriteLine("\n\nFaça login!");
                 Console.WriteLine("\nInsira o username: ");
                 string login = Validacao.StringV();
                 if (funcionario.Login == login)
@@ -135,6 +142,64 @@ namespace Livraria.Models
                }                   
            }                                            
             return cliente;
-        }                 
+        }    
+        
+        public static IProduto InstanciarProduto()
+        {
+            Console.WriteLine("(1) - Livro");
+            Console.WriteLine("(2) - Ebook");
+            int input = Validacao.IntV();
+
+            if (input == 1)
+            {
+                Console.Clear();
+                Console.WriteLine("Cadastrando um Livro");
+                Console.WriteLine("Insira o título:");
+                string titulo = Validacao.StringV();
+
+                Console.WriteLine("Insira o autor:");
+                string autor = Validacao.StringV();
+
+                Console.WriteLine("Insira a editora:");
+                string editora = Validacao.StringV();
+
+                Console.WriteLine("Insira o ano de publicação:");
+                int anoPublicacao = Validacao.IntV();
+
+                Console.WriteLine("Insira o ISBN do livro:");
+                string isbn = Validacao.StringV();
+
+                Console.WriteLine("Insira o preço do livro:");
+                double preco = Validacao.DoubleV();
+
+                IProduto produto = new Livro(titulo, autor, editora, anoPublicacao, isbn, preco);
+                return produto;
+            }
+            else
+            {
+                Console.Clear();
+                Console.WriteLine("Cadastrando um ebook!\n");
+                Console.WriteLine("Insira o título:");
+                string titulo = Validacao.StringV();
+
+                Console.WriteLine("Insira o autor:");
+                string autor = Validacao.StringV();
+
+                Console.WriteLine("Insira a editora:");
+                string editora = Validacao.StringV();
+
+                Console.WriteLine("Insira o ano de publicação:");
+                int anoPublicacao = Validacao.IntV();
+
+                Console.WriteLine("Insira o ISBN do livro:");
+                string isbn = Validacao.StringV();
+
+                Console.WriteLine("Insira o preço do livro:");
+                double preco = Validacao.DoubleV();
+
+                IProduto produto = new Ebook(titulo, autor, editora, anoPublicacao, isbn, preco);
+                return produto;
+            }
+        }
     }
 }

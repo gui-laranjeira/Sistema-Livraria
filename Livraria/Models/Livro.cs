@@ -20,9 +20,19 @@ namespace Livraria.Models
         public TipoProduto tipoProduto { get; set; } = TipoProduto.Livro;
 
         
+        public Livro( string titulo, string autor, string editora, int anoPublicacao, string isbn, double preco)
+        {
+            
+            Titulo = titulo;   
+            Autor = autor;
+            Editora = editora;
+            AnoPublicacao = anoPublicacao;
+            ISBN = isbn;
+            Preco = preco;
+        }  
         public Livro(int id, string titulo, string autor, string editora, int anoPublicacao, string isbn, double preco)
         {
-            Id = id;
+            this.Id = id;
             Titulo = titulo;   
             Autor = autor;
             Editora = editora;
