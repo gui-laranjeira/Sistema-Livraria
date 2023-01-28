@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using J3QQ4;
+
 
 namespace Livraria.Models
 {
@@ -61,7 +63,6 @@ namespace Livraria.Models
             } while (checkLogin == false);
         }
         
-        //TODO implementar metodo
         public static Cliente RegistrarCliente()
         {
             Console.WriteLine("Insira o nome e sobrenome:");
@@ -112,21 +113,6 @@ namespace Livraria.Models
             return input;
         }
 
-
-        //TODO Finalizar Busca cliente
-        //public static Cliente ChecarClienteValido(List<Cliente> clientes)
-        //{
-        //    Cliente cliente = BuscarCliente(clientes);
-        //    if (cliente.Nome == "")
-        //    {
-        //        return cliente;
-        //    }
-        //    else
-        //    {
-        //        throw new Exception("Cliente inexistente");
-               
-        //    }
-        //}
         public static Cliente BuscarCliente(List<Cliente> clientes)
         {
            string nomeCliente;

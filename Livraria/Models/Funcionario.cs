@@ -9,10 +9,9 @@ namespace Livraria.Models
     internal class Funcionario : Pessoa
     {        
         public string Login { get; set; }
-        //TODO rever
         public string Senha { get; private set; }
-
         public List<double> ComissoesDeVenda { get; set; } = new List<double>();
+
         public Funcionario(string nome, string cpf, int idade, string login, string senha) : base(nome, cpf, idade)
         {
             Login = login;

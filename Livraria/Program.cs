@@ -1,19 +1,17 @@
 ﻿using Livraria.Models;
+
+#region INSTÂNCIAÇÕES
 Funcionario funcionario = new Funcionario("João Pedro", "cpf", 21, "admin", "admin");
+
 Cliente cliente1 = new Cliente("Guilherme Laranjeira", "41245125648", 23, "Rua Laranjais 1029", "guilr13@gmail.com");
 Cliente cliente2 = new Cliente("Matheus Silva", "98584512345", 17, "Av. Paulista 2056", "matheus.silva@gmail.com");
 List<Cliente> clientes = new List<Cliente>();
 clientes.Add(cliente1);
 clientes.Add(cliente2);
+
 Estoque estoque = new Estoque();
 estoque.CadastroInicial();
-
-
-//^Operações de setup do sistema acima
-
-
-
-
+#endregion
 
 Sistema.RealizarLogin(funcionario);
 
@@ -21,6 +19,13 @@ int input;
 do
 {
     input = Sistema.Menu();
+
+    //MENU
+    //CadastrarCliente
+    //CadastrarIProduto
+    //RealizarVenda
+    //ConsultarEstoque
+    //Consultar comissão
 
     switch (input)
     {
@@ -64,8 +69,4 @@ do
 
 
 
-//MENU
-//CadastrarCliente
-//CadastrarIProduto
-//RealizarVenda
-//ConsultarEstoque
+
